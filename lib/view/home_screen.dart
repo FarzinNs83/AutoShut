@@ -1,3 +1,4 @@
+import 'package:autoshut/component/custom_title_bar.dart';
 import 'package:autoshut/controller/shutdown_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,6 @@ class HomeScreen extends StatelessWidget {
     if (storedTime != null) {
       shutdownController.selectedTime.value = DateTime.parse(storedTime);
     } else {
-    
       shutdownController.resetShutdown();
     }
 
@@ -30,22 +30,33 @@ class HomeScreen extends StatelessWidget {
     });
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("AutoShut"),
-        actions: [
-          Obx(() => IconButton(
-                icon:
-                    Icon(isDarkMode.value ? Icons.wb_sunny : Icons.nights_stay),
-                onPressed: () {
-                  isDarkMode.value = !isDarkMode.value;
-                  Get.changeThemeMode(
-                      isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
-                  storage.write('isDarkMode', isDarkMode.value);
-                },
-              )),
-        ],
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.update)),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: Column(
+          children: [
+             CustomTitleBar(), 
+            AppBar(
+              automaticallyImplyLeading: false, 
+              centerTitle: true,
+              title: const Text("AutoShut"),
+              actions: [
+                Obx(() => IconButton(
+                      icon: Icon(isDarkMode.value
+                          ? Icons.wb_sunny
+                          : Icons.nights_stay),
+                      onPressed: () {
+                        isDarkMode.value = !isDarkMode.value;
+                        Get.changeThemeMode(
+                            isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
+                        storage.write('isDarkMode', isDarkMode.value);
+                      },
+                    )),
+              ],
+              leading: IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.update)),
+            ),
+          ],
+        ),
       ),
       body: Obx(() {
         return Padding(
@@ -116,8 +127,7 @@ class HomeScreen extends StatelessWidget {
                       ? ElevatedButton.icon(
                           onPressed: () {
                             shutdownController.cancelShutdown();
-                            shutdownController
-                                .resetShutdown(); 
+                            shutdownController.resetShutdown();
                             storage.write('isShutdownScheduled', false);
                             storage.remove('selectedTime');
                           },
