@@ -10,6 +10,7 @@ class ShutdownController extends GetxController {
 
   final GetStorage storage = GetStorage();
   @override
+  @override
   void onInit() {
     super.onInit();
 
@@ -20,9 +21,17 @@ class ShutdownController extends GetxController {
 
     isShutdownScheduled.value = storage.read('isShutdownScheduled') ?? false;
 
+    updateConfirmButtonStatus();
+  }
+
+  void updateConfirmButtonStatus() {
     if (selectedTime.value != null &&
-        selectedTime.value!.isBefore(DateTime.now())) {
-      resetShutdown();
+        selectedTime.value!.isAfter(DateTime.now())) {
+      isShutdownScheduled.value = true;
+    } else {
+      isShutdownScheduled.value = false;
+      selectedTime.value = null;
+      storage.remove('shutdownTime');
     }
   }
 

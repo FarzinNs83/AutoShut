@@ -1,14 +1,14 @@
 import 'package:autoshut/component/system_tray.dart';
 import 'package:autoshut/view/home_screen.dart';
-import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:windows_single_instance/windows_single_instance.dart';
 
 Future<void> main(List<String> arg) async {
   await GetStorage.init();
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
   // final GetStorage storage = GetStorage();
 
@@ -26,21 +26,20 @@ Future<void> main(List<String> arg) async {
     center: true,
     title: "AutoShut",
   );
-    await windowManager.waitUntilReadyToShow(windowOptions).then((_) async {
+  await windowManager.waitUntilReadyToShow(windowOptions).then((_) async {
     await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
     await windowManager.show();
     await windowManager.focus();
   });
-  //   await WindowsSingleInstance.ensureSingleInstance(
-  //   arguments,
-  //   "instance_checker",
-  //   // ignore: avoid_print
-  //   onSecondWindow: (arguments) => print(arguments),
-  // );
+  await WindowsSingleInstance.ensureSingleInstance(
+    arg,
+    "instance_checker",
+    // ignore: avoid_print
+    onSecondWindow: (arguments) => print(arguments),
+  );
 
-  // await initTray();
+  await initTray();
   runApp(MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {

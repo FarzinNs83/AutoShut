@@ -21,6 +21,10 @@ dependencies:
   get_storage: ^2.1.1
   window_manager: ^0.4.2
   bitsdojo_window: ^0.1.6
+  url_launcher: ^6.3.0
+  http: ^1.2.2
+  windows_single_instance: ^1.0.1
+  flutter_timer_countdown: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +34,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+assets:
+  - assets/images/autoshut.ico
