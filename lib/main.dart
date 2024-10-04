@@ -33,7 +33,7 @@ Future<void> main(List<String> arg) async {
   });
   await WindowsSingleInstance.ensureSingleInstance(
     arg,
-    "instance_checker",
+    "AutoShut_instance_checker",
     // ignore: avoid_print
     onSecondWindow: (arguments) => print(arguments),
   );
