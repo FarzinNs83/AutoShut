@@ -9,7 +9,7 @@ class ShutdownController extends GetxController {
   var isShutdownScheduled = false.obs;
 
   final GetStorage storage = GetStorage();
-  @override
+
   @override
   void onInit() {
     super.onInit();

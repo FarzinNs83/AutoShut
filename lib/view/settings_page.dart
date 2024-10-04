@@ -65,7 +65,7 @@ class SettingsPage extends StatelessWidget {
   Future<void> _checkForUpdate(BuildContext context) async {
     const String repoOwner = 'FarzinNs83';
     const String repoName = 'AutoShut';
-    const String currentVersion = 'V.1.0.1';
+    const String currentVersion = 'V.1.0.0';
 
     const url =
         'https://api.github.com/repos/$repoOwner/$repoName/releases/latest';
