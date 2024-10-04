@@ -85,29 +85,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 24,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.date_range_outlined,
-                      color: Colors.greenAccent,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "The Latest Schedule Is Shown To The User",
-                      style: TextStyle(
-                        color: Colors.greenAccent,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
                 ElevatedButton.icon(
                   onPressed: () => shutdownController.pickTime(context),
                   icon: const Icon(Icons.access_time),

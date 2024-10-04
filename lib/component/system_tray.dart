@@ -3,7 +3,7 @@ import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
 Future<void> initTray() async {
-  await TrayManager.instance.setIcon('assets/images/autoshut.ico');
+  await TrayManager.instance.setIcon('assets/images/tray.ico');
 
   List<MenuItem> items = [
     MenuItem(
