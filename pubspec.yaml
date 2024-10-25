@@ -24,6 +24,7 @@ dependencies:
   windows_single_instance: ^1.0.1
   # flutter_timer_countdown: ^1.0.7
   tray_manager: ^0.2.4
+  flutter_timer_countdown: ^1.0.7
 
 dev_dependencies:
   flutter_test:

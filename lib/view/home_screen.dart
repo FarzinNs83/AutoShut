@@ -54,6 +54,15 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                // const SizedBox(height: 24),
+                // if (shutdownController.isShutdownScheduled.value)
+                //   Text(
+                //     "Time Remaining: ${shutdownController.remainingTime.value}",
+                //     style: const TextStyle(
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //     ),
+                //   ),
                 const SizedBox(height: 24),
                 ElevatedButton.icon(
                   onPressed: () => shutdownController.pickTime(context),

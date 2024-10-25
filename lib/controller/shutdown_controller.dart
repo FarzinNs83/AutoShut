@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 class ShutdownController extends GetxController {
   var selectedTime = Rxn<DateTime>();
   var isShutdownScheduled = false.obs;
+  // var remainingTime = 0.obs;
 
   final GetStorage storage = GetStorage();
 
@@ -81,7 +82,10 @@ class ShutdownController extends GetxController {
       storage.write('isShutdownScheduled', true);
 
       storage.write('shutdownInProgress', true);
-
+      // remainingTime.value = duration.inHours;
+      // duration.inMinutes;
+      // duration.inSeconds;
+      // startCountDown(duration.inHours, duration.inMinutes, duration.inSeconds);
       Get.snackbar(
         'Shutdown Scheduled',
         'System will shutdown at ${DateFormat('hh:mm a').format(shutdownTime)}',
@@ -121,4 +125,15 @@ class ShutdownController extends GetxController {
     storage.write('isShutdownScheduled', false);
     storage.write('shutdownInProgress', false);
   }
+
+  // void startCountDown(int hours, int minutes, int seconds) {
+  //   Future.delayed(
+  //       Duration(
+  //         hours: hours,
+  //         minutes: minutes,
+  //         seconds: seconds,
+  //       ), () {
+  //     resetShutdown();
+  //   });
+  // }
 }
