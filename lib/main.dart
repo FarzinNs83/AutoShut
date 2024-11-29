@@ -22,7 +22,7 @@ Future<void> main(List<String> arg) async {
   // }
   WindowOptions windowOptions = const WindowOptions(
     backgroundColor: Colors.transparent,
-    size: Size(620, 480),
+    size: Size(620, 440),
     center: true,
     title: "AutoShut",
   );

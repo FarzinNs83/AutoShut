@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
-  final isDarkMode = false.obs;
+  final isDarkMode = true.obs;
   final GetStorage storage = GetStorage();
 
   SettingsPage({super.key}) {
-    isDarkMode.value = storage.read('isDarkMode') ?? false;
+    isDarkMode.value = storage.read('isDarkMode') ?? true;
   }
 
   @override

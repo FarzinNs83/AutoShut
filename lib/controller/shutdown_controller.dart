@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:timer_count_down/timer_controller.dart';
 
 class ShutdownController extends GetxController {
   var selectedTime = Rxn<DateTime>();
   var isShutdownScheduled = false.obs;
+  var countdownController = CountdownController().obs;
   // var remainingTime = 0.obs;
 
   final GetStorage storage = GetStorage();
@@ -126,14 +128,5 @@ class ShutdownController extends GetxController {
     storage.write('shutdownInProgress', false);
   }
 
-  // void startCountDown(int hours, int minutes, int seconds) {
-  //   Future.delayed(
-  //       Duration(
-  //         hours: hours,
-  //         minutes: minutes,
-  //         seconds: seconds,
-  //       ), () {
-  //     resetShutdown();
-  //   });
-  // }
+
 }

@@ -21,8 +21,12 @@ class CustomTitleBar extends StatelessWidget {
             ),
             const Row(
               children: [
-                MinimizeWindow(),
-                CloseWindowButton(),
+                Center(
+                  child: MinimizeWindow(),
+                ),
+                Center(
+                  child: CloseWindowButton(),
+                )
               ],
             )
           ],
