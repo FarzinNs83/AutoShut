@@ -26,6 +26,7 @@ dependencies:
   tray_manager: ^0.2.4
   flutter_timer_countdown: ^1.0.7
   timer_count_down: ^2.2.2
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:

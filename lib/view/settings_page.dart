@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -56,6 +57,18 @@ class SettingsPage extends StatelessWidget {
                 leading: const Icon(Icons.update),
                 title: const Text("Check for Update"),
                 onTap: () => _checkForUpdate(context),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 5,
+              child: ListTile(
+                leading: const Icon(Icons.support_agent),
+                title: const Text("Contact Us"),
+                onTap: () => contactUs(context),
               ),
             ),
           ],
@@ -136,5 +149,108 @@ class SettingsPage extends StatelessWidget {
         );
       },
     );
+  }
+Future<dynamic> contactUs(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: Get.height * 0.25,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(24),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    child: IconButton(
+                      splashRadius: 6,
+                      icon: const FaIcon(FontAwesomeIcons.telegram),
+                      iconSize: 42,
+                      color: Theme.of(context).colorScheme.primary,
+                      onPressed: () {
+                        mylaunchUrl('https://t.me/flutterstuff');
+                      },
+                    ),
+                  ),
+                  Text("Telegram",
+                      style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
+              // const SizedBox(width: 16),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    child: IconButton(
+                      splashRadius: 6,
+                      icon: const FaIcon(FontAwesomeIcons.github),
+                      iconSize: 42,
+                      color: Theme.of(context).colorScheme.primary,
+                      onPressed: () {
+                        mylaunchUrl('https://github.com/FarzinNs83/AutoShut');
+                      },
+                    ),
+                  ),
+                  Text("GitHub",
+                      style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
+              // const SizedBox(width: 16),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    child: IconButton(
+                      splashRadius: 6,
+                      icon: const Icon(Icons.support_agent),
+                      iconSize: 42,
+                      color: Theme.of(context).colorScheme.primary,
+                      onPressed: () {
+                        mylaunchUrl('https://t.me/feri_ns83');
+                      },
+                    ),
+                  ),
+                  Text("Support",
+                      style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+    mylaunchUrl(String url) async {
+    var uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      debugPrint("Could not launch");
+    }
   }
 }
